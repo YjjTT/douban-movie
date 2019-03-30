@@ -1,0 +1,33 @@
+.header {
+    .top {
+        background-color: #535652;
+        height: 30px;
+        font-size: 12px;
+        a {
+            font-weight: bolder;
+            display: inline-block;
+            padding: 7px 15px;
+            color: #d5d5d5;
+        }
+    }
+
+    .content {
+        height: 76px;
+        background-color: #F1F3F5;
+        .title {
+            float: left;
+            color: #258DCD;
+            font-weight: bolder;
+            font-size: 30px;
+            padding: 17px 0;
+            box-sizing: border-box;
+            margin-left: 5vw;
+        }
+
+        .searchInput {
+            margin-left: 40px;
+            float: left;
+            padding: 22px 0;
+        }
+    }
+}
