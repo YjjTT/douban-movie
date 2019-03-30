@@ -1,5 +1,8 @@
 .header {
+    width: 100%;
+    min-width: 1040px;
     background-color: #F1F3F5;
+    margin: 0 auto;
     .top {
         background-color: #535652;
         height: 30px;
@@ -13,6 +16,8 @@
 
     .content {
         height: 76px;
+        width: 1040px;
+        margin: 0 auto;
         .title {
             float: left;
             color: #258DCD;
@@ -20,7 +25,6 @@
             font-size: 30px;
             padding: 17px 0;
             box-sizing: border-box;
-            margin-left: 5vw;
         }
 
         .searchInput {
@@ -30,25 +34,26 @@
         }
     }
 
+    .line {
+        width: 100%;
+        height: 1px;
+        background-color: #E2EBECed;
+    }
+
     .cate {
-        border-top: 1px solid #DADADA;
-        margin-top: 2px;
         margin-bottom: 0;
         height: 40px;
-        padding-left: 5vm;
+        width: 1040px;
+        margin: 0 auto;
+        overflow: hidden;
         li {
             float: left;
             font-size: 15px;
             padding: 9px 0;
             margin-right: 20px;
-            &:nth-child(1) {
-                margin-left: 5vw;
-            }
             a {
                 color: #307EAE;
             }
-
         }
-        
     }
 }
