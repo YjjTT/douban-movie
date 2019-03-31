@@ -1,45 +1,35 @@
 import React from 'react'
 import Slider from 'react-slick'
+import { connect } from 'react-redux'
 import { Rate, Button } from 'antd'
-import axios from 'axios'
+import { actionCreators } from './store/index'
 import './index.scss'
+
+const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow:1,
+    slidesToScroll: 1
+}
+
 class Home extends React.Component {
 
-    constructor() {
-        super()
-        this.state = {
-            dataList: []
-        }
-    }
-
-    // 正在热映电影
-    loadTheaterData = () => {
-        axios({
-            method: 'get',
-            url: '/v2/movie/in_theaters'
-        }).then(res => {
-            if (res.status === 200) {
-                
-                this.setState({
-                    dataList: res.data.subjects
-                })
-            }
-        })
-
-    }
-
     componentDidMount() {
-        this.loadTheaterData()
+        // 正在热映电影
+        this.props.getTheraterList()
+        // 
+        this.props.getHotMovieTags()
     }
 
+
+    
     render() {
-        const settings = {
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow:1,
-            slidesToScroll: 1
-        }
+        const style = { backgroundColor: "#258DCC", color: "white", fontSize: '10px'}
+        const {
+            theraterList
+        } = this.props
+        const data = theraterList
         return (
             <div className='home'>
                 <div className='content'>
@@ -51,116 +41,73 @@ class Home extends React.Component {
                                 <a className='will-in-theater' href='/'>即将上映>></a>
                             </div>
                             <Slider {...settings}>
-                                <div>
-                                <ul className='clearfix'>
+                                {
+                                    data.length > 0
+                                    ? data.map((item, index) => (
+                                        <div key={index}>
+                                            <ul className='clearfix'>
+                                                {   item.length > 0 
+                                                    ? item.map((each, innerindex) => (
+                                                        <li key={innerindex} className='each'>
+                                                            <a href='/'>
+                                                                <img alt={each.alt} src={each.images.medium} />
+                                                            </a>
+                                                            <a className='title' href='/'>{each.title}</a>
+                                                            <span className='rate'>
+                                                                <Rate style={{ fontSize: 10, color: "#FFAC2C" }} disabled allowHalf defaultValue={each.rating.stars / 10} /> {each.rating.average}                                       
+                                                            </span>
+                                                            <Button style={style}>选座购票</Button>
+                                                        </li>
+                                                    )) : <div></div>
+                                                }
+                                            </ul>
+                                        </div>
+                                    )) : <div></div>
+                                }
                                 
-                                <li className='each'>
-                                    <a href='/'>
-                                        <img src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2549234765.webp' />
-                                    </a>
-                                    <a className='title' href='/'>波西米亚狂想</a>
-                                    <span className='rate'>
-                                        <Rate style={{ fontSize: 10, color: "#FFAC2C" }} disabled  defaultValue={3} /> 8.3                                        
-                                    </span>
-                                    <Button style={{ backgroundColor: "#258DCC", color: "white", fontSize: '10px', padding: '2px 15px 2px 15px' }}>选座购票</Button>
-                                </li>
-                                <li className='each'>
-                                    <a href='/'>
-                                        <img src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2549234765.webp' />
-                                    </a>
-                                    <a className='title' href='/'>波西米亚狂想</a>
-                                    <span className='rate'>
-                                        <Rate style={{ fontSize: 10, color: "#FFAC2C" }} disabled  defaultValue={3} /> 8.3                                        
-                                    </span>
-                                    <Button style={{ backgroundColor: "#258DCC", color: "white", fontSize: '10px', padding: '2px 15px 2px 15px' }}>选座购票</Button>
-                                </li>
-                                <li className='each'>
-                                    <a href='/'>
-                                        <img src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2549234765.webp' />
-                                    </a>
-                                    <a className='title' href='/'>波西米亚狂想</a>
-                                    <span className='rate'>
-                                        <Rate style={{ fontSize: 10, color: "#FFAC2C" }} disabled  defaultValue={3} /> 8.3                                        
-                                    </span>
-                                    <Button style={{ backgroundColor: "#258DCC", color: "white", fontSize: '10px', padding: '2px 15px 2px 15px' }}>选座购票</Button>
-                                </li>
-                                <li className='each'>
-                                    <a href='/'>
-                                        <img src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2549234765.webp' />
-                                    </a>
-                                    <a className='title' href='/'>波西米亚狂想</a>
-                                    <span className='rate'>
-                                        <Rate style={{ fontSize: 10, color: "#FFAC2C" }} disabled  defaultValue={3} /> 8.3                                        
-                                    </span>
-                                    <Button style={{ backgroundColor: "#258DCC", color: "white", fontSize: '10px', padding: '2px 15px 2px 15px' }}>选座购票</Button>
-                                </li>
-                                <li className='each'>
-                                    <a href='/'>
-                                        <img src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2549234765.webp' />
-                                    </a>
-                                    <a className='title' href='/'>波西米亚狂想</a>
-                                    <span className='rate'>
-                                        <Rate style={{ fontSize: 10, color: "#FFAC2C" }} disabled  defaultValue={3} /> 8.3                                        
-                                    </span>
-                                    <Button style={{ backgroundColor: "#258DCC", color: "white", fontSize: '10px', padding: '2px 15px 2px 15px' }}>选座购票</Button>
-                                </li>
-                            </ul>
-                                </div>
-                                <div>
-                                <ul className='clearfix'>
+                            </Slider>
+                        </div>
+                        
+                        <a href='/' className='advert'>
+                            <img alt='' src='https://img1.doubanio.com/view/dale-online/dale_ad/public/9c8f726e63d7269.jpg' />
+                        </a>
+                        <div className='item'>
+                            <div>
+                                最近热门电影
+                                <span className='cate active'>热门</span>
+                                <span className='cate'>热门</span>
+                                <span className='cate'>热门</span>
+                                <span className='cate'>热门</span>
+                                <span className='cate'>热门</span>
+                                <span className='cate'>热门</span>
+                                <span className='cate'>热门</span>
+                                <span className='cate'>热门</span>
+                            </div>
+                            <Slider {...settings}>
+                                {
+                                    data.length > 0
+                                    ? data.map((item, index) => (
+                                        <div key={index}>
+                                            <ul className='clearfix'>
+                                                {   item.length > 0 
+                                                    ? item.map((each, innerindex) => (
+                                                        <li key={innerindex} className='each'>
+                                                            <a href='/'>
+                                                                <img alt={each.alt} src={each.images.medium} />
+                                                            </a>
+                                                            <a className='title' href='/'>{each.title}</a>
+                                                            <span className='rate'>
+                                                                <Rate style={{ fontSize: 10, color: "#FFAC2C" }} disabled allowHalf defaultValue={each.rating.stars / 10} /> {each.rating.average}                                       
+                                                            </span>
+                                                            <Button style={style}>选座购票</Button>
+                                                        </li>
+                                                    )) : <div></div>
+                                                }
+                                            </ul>
+                                        </div>
+                                    )) : <div></div>
+                                }
                                 
-                                <li className='each'>
-                                    <a href='/'>
-                                        <img src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2549234765.webp' />
-                                    </a>
-                                    <a className='title' href='/'>波西米亚狂想</a>
-                                    <span className='rate'>
-                                        <Rate style={{ fontSize: 10, color: "#FFAC2C" }} disabled  defaultValue={3} /> 8.3                                        
-                                    </span>
-                                    <Button style={{ backgroundColor: "#258DCC", color: "white", fontSize: '10px', padding: '2px 15px 2px 15px' }}>选座购票</Button>
-                                </li>
-                                <li className='each'>
-                                    <a href='/'>
-                                        <img src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2549234765.webp' />
-                                    </a>
-                                    <a className='title' href='/'>波西米亚狂想</a>
-                                    <span className='rate'>
-                                        <Rate style={{ fontSize: 10, color: "#FFAC2C" }} disabled  defaultValue={3} /> 8.3                                        
-                                    </span>
-                                    <Button style={{ backgroundColor: "#258DCC", color: "white", fontSize: '10px', padding: '2px 15px 2px 15px' }}>选座购票</Button>
-                                </li>
-                                <li className='each'>
-                                    <a href='/'>
-                                        <img src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2549234765.webp' />
-                                    </a>
-                                    <a className='title' href='/'>波西米亚狂想</a>
-                                    <span className='rate'>
-                                        <Rate style={{ fontSize: 10, color: "#FFAC2C" }} disabled  defaultValue={3} /> 8.3                                        
-                                    </span>
-                                    <Button style={{ backgroundColor: "#258DCC", color: "white", fontSize: '10px', padding: '2px 15px 2px 15px' }}>选座购票</Button>
-                                </li>
-                                <li className='each'>
-                                    <a href='/'>
-                                        <img src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2549234765.webp' />
-                                    </a>
-                                    <a className='title' href='/'>波西米亚狂想</a>
-                                    <span className='rate'>
-                                        <Rate style={{ fontSize: 10, color: "#FFAC2C" }} disabled  defaultValue={3} /> 8.3                                        
-                                    </span>
-                                    <Button style={{ backgroundColor: "#258DCC", color: "white", fontSize: '10px', padding: '2px 15px 2px 15px' }}>选座购票</Button>
-                                </li>
-                                <li className='each'>
-                                    <a href='/'>
-                                        <img src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2549234765.webp' />
-                                    </a>
-                                    <a className='title' href='/'>波西米亚狂想</a>
-                                    <span className='rate'>
-                                        <Rate style={{ fontSize: 10, color: "#FFAC2C" }} disabled  defaultValue={3} /> 8.3                                        
-                                    </span>
-                                    <Button style={{ backgroundColor: "#258DCC", color: "white", fontSize: '10px', padding: '2px 15px 2px 15px' }}>选座购票</Button>
-                                </li>
-                            </ul>
-                                </div>
                             </Slider>
                         </div>
                     </div>
@@ -173,4 +120,21 @@ class Home extends React.Component {
     }
 }
 
-export default Home
+const mapStateToProps = (state) => {
+    return {
+        theraterList: state.home.theraterList
+    }
+}
+
+const mapStateToDispatch = (dispatch) => ({
+    // 正在热映电影
+    getTheraterList() {
+        dispatch(actionCreators.getTheaterList())
+    },
+    // 最近热门电影 --- 标签
+    getHotMovieTags() {
+        dispatch(actionCreators.getHotMovieTagList())
+    }
+})
+
+export default connect(mapStateToProps, mapStateToDispatch)(Home)
