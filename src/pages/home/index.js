@@ -15,11 +15,9 @@ const settings = {
 
 class Home extends React.Component {
 
-    componentDidMount() {
+    componentWillMount() {
         // 正在热映电影
         this.props.getTheraterList()
-        // 
-        this.props.getHotMovieTags()
     }
 
 
@@ -27,9 +25,9 @@ class Home extends React.Component {
     render() {
         const style = { backgroundColor: "#258DCC", color: "white", fontSize: '10px'}
         const {
-            theraterList
+            theraterList,
         } = this.props
-        const data = theraterList
+        
         return (
             <div className='home'>
                 <div className='content'>
@@ -42,8 +40,8 @@ class Home extends React.Component {
                             </div>
                             <Slider {...settings}>
                                 {
-                                    data.length > 0
-                                    ? data.map((item, index) => (
+                                    theraterList.length > 0
+                                    ? theraterList.map((item, index) => (
                                         <div key={index}>
                                             <ul className='clearfix'>
                                                 {   item.length > 0 
@@ -85,8 +83,8 @@ class Home extends React.Component {
                             </div>
                             <Slider {...settings}>
                                 {
-                                    data.length > 0
-                                    ? data.map((item, index) => (
+                                    theraterList.length > 0
+                                    ? theraterList.map((item, index) => (
                                         <div key={index}>
                                             <ul className='clearfix'>
                                                 {   item.length > 0 
@@ -122,7 +120,7 @@ class Home extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        theraterList: state.home.theraterList
+        theraterList: state.home.theraterList,
     }
 }
 
@@ -131,10 +129,6 @@ const mapStateToDispatch = (dispatch) => ({
     getTheraterList() {
         dispatch(actionCreators.getTheaterList())
     },
-    // 最近热门电影 --- 标签
-    getHotMovieTags() {
-        dispatch(actionCreators.getHotMovieTagList())
-    }
 })
 
 export default connect(mapStateToProps, mapStateToDispatch)(Home)
