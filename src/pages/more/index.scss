@@ -1,0 +1,45 @@
+#more {
+    width: 1040px;
+    margin: 0 auto;
+    margin-top: 35px;
+    font-size: 17px;
+
+    h1 {
+        font-size: 26px;
+        color: #494949;
+    }
+
+    .article {
+        width: 675px;
+        .filter {
+            .tag-list {
+                border-bottom: 1px solid #EEEEEE;
+                padding-bottom: 15px;
+                label {
+                    display: inline-block;
+                    font-size: 14px;
+                    background: white;
+                    color: #6C6C6C;
+                    cursor: pointer;
+                    margin: 2px 3px 5px 0;
+                    padding: 3px 10px;
+                    border-radius: 2px;
+                }
+
+                .normal {
+                    &:hover {
+                        background-color: #EEEEEE;
+                    }
+                }
+
+                .active {
+                    background: #4b8ccb;
+                    color: white;
+                }
+            }
+            .sort {
+                margin-top: 15px;
+            }
+        }
+    }
+}

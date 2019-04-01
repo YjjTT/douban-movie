@@ -77,6 +77,19 @@
                     }
                 }
 
+                // 更多
+                .more {
+                    float: right;
+                    font-size: 12px;
+                    text-decoration: none;
+                    margin-top: 5px;
+                    color: #6C6B9D;
+                    &:hover {
+                        color: white;
+                        background-color: #4985B3;
+                    }
+                }
+
                 // 电影分类
                 .cate {
                     font-size: 10px;

@@ -3,6 +3,7 @@ import Slider from 'react-slick'
 import { connect } from 'react-redux'
 import { Rate, Button } from 'antd'
 import { actionCreators } from './store/index'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import './index.scss'
 
@@ -48,7 +49,6 @@ class Home extends React.Component {
                 this.setState({
                     weeklyList: res.data.subjects
                 })
-                console.log(res.data)
             }
         }).then(error => {
         })
@@ -170,19 +170,18 @@ class Home extends React.Component {
                                     theraterList.map((item, index) => (
                                         <div key={index}>
                                             <ul className='clearfix'>
-                                                {   item.length > 0 
-                                                    ? item.map((each, innerindex) => (
+                                                {   item.map((each, innerindex) => (
                                                         <li key={innerindex} className='each'>
-                                                            <a href='/'>
+                                                            <Link to={`/movieDetail/${each.id}`}>
                                                                 <img alt={each.alt} src={each.images.medium} />
-                                                            </a>
+                                                            </Link>
                                                             <a className='title' href='/'>{each.title}</a>
                                                             <span className='rate'>
                                                                 <Rate style={{ fontSize: 10, color: "#FFAC2C" }} disabled allowHalf defaultValue={each.rating.stars / 10} /> {each.rating.average}                                       
                                                             </span>
                                                             <Button style={style}>选座购票</Button>
                                                         </li>
-                                                    )) : <div></div>
+                                                    ))
                                                 }
                                             </ul>
                                         </div>
@@ -203,6 +202,7 @@ class Home extends React.Component {
                                     ))
                                     
                                 }
+                                <Link to='/more' className='more'>更多>></Link>
                             </div>
                             <Slider {...settings}>
                                 {
@@ -237,6 +237,7 @@ class Home extends React.Component {
                                     ))
                                     
                                 }
+                                <Link to='/more' className='more'>更多>></Link>
                             </div>
                             <Slider {...settings}>
                                 {
