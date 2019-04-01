@@ -5,7 +5,6 @@ import { Radio } from 'antd'
 import './index.scss'
 
 const RadioGroup = Radio.Group 
-
 class More extends React.Component {
 
     constructor() {
@@ -18,6 +17,10 @@ class More extends React.Component {
 
     componentDidMount() {
         this.props.getTagList()
+        this.props.getDataList(
+                this.props.page_limit, 
+                this.props.page_start
+            )
     }
 
     handleOnTagClick = (index) => {
@@ -26,9 +29,7 @@ class More extends React.Component {
                 sort: 'time'
             })
         }
-        this.setState({
-            currentTagIndex: index
-        })
+        this.props.changeTagIndex(index)
     }
 
     // 排序单选框
@@ -36,14 +37,15 @@ class More extends React.Component {
         this.setState({
             sort: e.target.value
         })
-        console.log(e.target.value)
     }
 
     render() {
         const {
-            tagList
+            tagList,
+            dataList,
+            currentTagIndex
         } = this.props
-        const disabled = this.state.currentTagIndex === 1
+        const disabled = currentTagIndex === 1
         const value = disabled ? 'time' : this.state.sort
         return (
             <div id='more'>
@@ -56,7 +58,7 @@ class More extends React.Component {
                                     <label
                                         onClick={this.handleOnTagClick.bind(this, index)} 
                                         key={index} 
-                                        className={this.state.currentTagIndex === index ? 'active' : 'normal'}
+                                        className={currentTagIndex === index ? 'active' : 'normal'}
                                     >{item}</label>
                                 ))
                             }
@@ -76,15 +78,22 @@ class More extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    tagList: state.more.tagList
+    tagList: state.more.tagList,
+    dataList: state.more.dataList,
+    page_limit: state.more.page_limit,
+    page_start: state.more.page_start,
+    currentTagIndex: state.more.currentTagIndex
 })
 
 const mapStateToDispatch = (dispatch) => ({
     getTagList() {
         dispatch(actionCreators.getTagList())
     },
-    getDataList() {
-        
+    getDataList(page_limit, page_start) {
+        dispatch(actionCreators.getDataList(page_limit, page_start))
+    },
+    changeTagIndex(index) {
+        dispatch(actionCreators.changeTagIndex(index))
     }
 })
 
