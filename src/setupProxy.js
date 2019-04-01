@@ -21,5 +21,15 @@ module.exports = function(app) {
                 "^/apb": "/"
             }
         })
+    );
+    app.use(
+        proxy('/openApi', {
+            target: "http://118.24.21.99:5000/proxy/movie",
+            // secure: false,
+            changeOrigin: true,
+            pathRewrite: {
+                '^/openApi': '/'
+            }
+        })
     )
 }

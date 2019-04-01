@@ -5,7 +5,6 @@ import { Rate, Button } from 'antd'
 import { actionCreators } from './store/index'
 import axios from 'axios'
 import './index.scss'
-import { red } from 'ansi-colors';
 
 const settings = {
     dots: true,
@@ -24,6 +23,7 @@ class Home extends React.Component {
             hotMovies: [],
             hotTvTags: [],
             hotTvs: [],
+            weeklyList: [],
             currentMovieTagIndex: 0,
             currentTvTagIndex: 0
         }
@@ -35,6 +35,23 @@ class Home extends React.Component {
         // this.props.getHotMovieTags()
         this.loadHotMovieTags()
         this.loadHotTvTags()
+        this.loadWeeklyMovies()
+    }
+
+    // 本周电影口碑榜
+    loadWeeklyMovies() {
+        axios({
+            method: 'get',
+            url: '/openApi/weekly?apikey=0b2bdeda43b5688921839c8ecb20399b'
+        }).then(res => {
+            if (res.status === 200) {
+                this.setState({
+                    weeklyList: res.data.subjects
+                })
+                console.log(res.data)
+            }
+        }).then(error => {
+        })
     }
 
     //  热门电影标签
@@ -124,8 +141,6 @@ class Home extends React.Component {
         this.loadHotTvs(this.state.hotTvTags[index])
         
     }
-
-
     
     render() {
         const style = { backgroundColor: "#258DCC", color: "white", fontSize: '10px'}
@@ -133,11 +148,16 @@ class Home extends React.Component {
             theraterList,
         } = this.props
 
-        const { hotMovieTags, hotMovies, hotTvs, hotTvTags } = this.state
+        const { 
+            hotMovieTags,     
+            hotMovies, 
+            hotTvs, 
+            hotTvTags, 
+            weeklyList } = this.state
         
         return (
             <div className='home'>
-                <div className='content'>
+                <div className='content clearfix'>
                     <div className='article'>
                         <div className='item'>
                             <div>
@@ -243,7 +263,17 @@ class Home extends React.Component {
                             </Slider>
                         </div>
                     </div>
-                    <div className='aside'></div>
+                    <div className='aside'>
+                        <a href='/' className='ques'>豆瓣电影评分八问</a>
+                        <label className='billboard-hd'>一周口碑榜 <a href='/'>更多榜单>>></a></label>
+                        <ul className='billboard-bd'>
+                                {
+                                    weeklyList.map((item, index) => (
+                                        <li key={index}>{index + 1} <a href='/'>{item.subject.title}</a></li>
+                                    ))
+                                }
+                        </ul>
+                    </div>
                 </div>
                 <div className='footer'>
                 </div>

@@ -4,9 +4,11 @@
     margin-top: 35px;
     font-size: 17px;
     .content {
-        width: 675px;
+        // width: 675px;
         height: 324px;
         .article {
+            width: 675px;
+            float: left;
             .item {
                 // background: red;
                 margin-top: 20px;
@@ -98,6 +100,54 @@
                         height: 112px;;
                     }
                 }
+            }
+        }
+    }
+
+    // 侧边栏
+    .aside {
+        width: 300px;
+        float: right;
+        margin-top: 20px;
+
+        .ques {
+            display: inline-block;
+            width: 100%;
+            text-decoration: none;
+            font-size: 15px;
+            background-color: #F2F7F6;
+            color: #676699;
+            padding: 11px 0;
+            padding-left: 15px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        .billboard-hd {
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #EAEAEA;
+            a {
+                font-size: 10px;
+                text-decoration: none;
+                color: #69689A;
+                margin-left: 10px;
+            }
+        }
+
+        .billboard-bd {
+            li {
+                border-bottom: 1px solid #EAEAEA;
+                padding: 10px 0;
+                font-size: 14px;
+                padding-left: 10px;
+                box-sizing: border-box;
+
+                a {
+                    color: #4985B3;
+                }
+                
             }
         }
     }
