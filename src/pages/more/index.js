@@ -10,17 +10,12 @@ class More extends React.Component {
     constructor() {
         super()
         this.state = {
-            currentTagIndex: 0,
             sort: 'recommend'
         }
     }
 
     componentDidMount() {
         this.props.getTagList()
-        this.props.getDataList(
-                this.props.page_limit, 
-                this.props.page_start
-            )
     }
 
     handleOnTagClick = (index) => {
@@ -30,6 +25,11 @@ class More extends React.Component {
             })
         }
         this.props.changeTagIndex(index)
+        this.props.getDataList(
+            this.props.tagList[index],
+            this.props.page_limit,
+            this.props.page_start
+        )
     }
 
     // 排序单选框
@@ -89,8 +89,8 @@ const mapStateToDispatch = (dispatch) => ({
     getTagList() {
         dispatch(actionCreators.getTagList())
     },
-    getDataList(page_limit, page_start) {
-        dispatch(actionCreators.getDataList(page_limit, page_start))
+    getDataList(tag, page_limit, page_start) {
+        dispatch(actionCreators.getDataList(tag, page_limit, page_start))
     },
     changeTagIndex(index) {
         dispatch(actionCreators.changeTagIndex(index))

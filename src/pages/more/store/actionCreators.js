@@ -12,6 +12,20 @@ export const getTagList = () => {
                     type: actionTypes.TAG_LIST,
                     data: res.data.tags
                 }
+                axios({
+                    method: 'get',
+                    url: `/apb/j/search_subjects?type=movie&tag=${res.data.tags[0]}&page_limit=20&page_start=0`
+                }).then(res => {
+                    if (res.status === 200) {
+                        const innerAction = {
+                            type: actionTypes.DATA_LIST,
+                            data: res.data.subjects
+                        }
+                        dispatch(innerAction)
+                    }
+                }).catch(error => {
+                })
+
                 dispatch(action)
             }
         }).catch(error => {
@@ -20,11 +34,11 @@ export const getTagList = () => {
     }
 }
 
-export const getDataList = (page_limit, page_start) => {
+export const getDataList = (tag, page_limit = 20, page_start = 0) => {
     return dispatch => {
         axios({
             method: 'get',
-            url: `/apb/j/search_subjects?type=movie&tag=%E6%9C%80%E6%96%B0&page_limit=${page_limit}&page_start=${page_start}`
+            url: `/apb/j/search_subjects?type=movie&tag=${tag}&page_limit=${page_limit}&page_start=${page_start}`
         }).then(res => {
             if (res.status === 200) {
                 const action = {
