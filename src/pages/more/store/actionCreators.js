@@ -19,7 +19,8 @@ export const getTagList = () => {
                     if (res.status === 200) {
                         const innerAction = {
                             type: actionTypes.DATA_LIST,
-                            data: res.data.subjects
+                            data: res.data.subjects,
+                            isSwitchTag: false
                         }
                         dispatch(innerAction)
                     }
@@ -34,7 +35,7 @@ export const getTagList = () => {
     }
 }
 
-export const getDataList = (tag, page_limit = 20, page_start = 0) => {
+export const getDataList = (isSwitchTag, tag, page_limit = 20, page_start = 0) => {
     return dispatch => {
         axios({
             method: 'get',
@@ -43,7 +44,8 @@ export const getDataList = (tag, page_limit = 20, page_start = 0) => {
             if (res.status === 200) {
                 const action = {
                     type: actionTypes.DATA_LIST,
-                    data: res.data.data
+                    data: res.data.subjects,
+                    isSwitchTag: isSwitchTag
                 }
                 dispatch(action)
             }
@@ -57,6 +59,17 @@ export const changeTagIndex = (index) => {
     return dispatch => {
         const action = {
             type: actionTypes.CHANGE_TAG_INDEX,
+            data: index
+        }
+        dispatch(action)
+    }
+}
+
+// 加载更多改变page_start
+export const changePageStart = (index) => {
+    return dispatch => {
+        const action = {
+            type: actionTypes.CHANGE_PAGE_START,
             data: index
         }
         dispatch(action)

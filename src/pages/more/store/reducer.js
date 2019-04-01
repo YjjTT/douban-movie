@@ -17,9 +17,11 @@ export default (state = defaultState, action) => {
             }
         
         case actionTypes.DATA_LIST:
+            let data = action.isSwitchTag ? [] : state.dataList
             return {
                 ...state,
-                dataList: action.data
+                // dataList: action.data,
+                dataList: data.concat(action.data)
             }
     
         case actionTypes.CHANGE_TAG_INDEX:
@@ -27,6 +29,12 @@ export default (state = defaultState, action) => {
                 ...state,
                 currentTagIndex: action.data
             }
+        
+            case actionTypes.CHANGE_PAGE_START:
+                return {
+                    ...state,
+                    page_start: action.data
+                }
         default:
             return state
     }

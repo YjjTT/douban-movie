@@ -18,6 +18,7 @@ class More extends React.Component {
         this.props.getTagList()
     }
 
+    // 切换标签
     handleOnTagClick = (index) => {
         if (index === 1) {
             this.setState({
@@ -25,10 +26,14 @@ class More extends React.Component {
             })
         }
         this.props.changeTagIndex(index)
+        const isSwitchTag = true
+        const page_limit = 20
+        const page_start = 0
         this.props.getDataList(
+            isSwitchTag,
             this.props.tagList[index],
-            this.props.page_limit,
-            this.props.page_start
+            page_limit,
+            page_start
         )
     }
 
@@ -39,11 +44,24 @@ class More extends React.Component {
         })
     }
 
+    // 加载更多
+    handleOnLoadMore = () => {
+        const page_start = this.props.page_start + 20
+        this.props.changePageStart(page_start)
+        const isSwitchTag = false
+        this.props.getDataList(
+            isSwitchTag,
+            this.props.tagList[this.props.currentTagIndex],
+            this.props.page_limit,
+            page_start
+        )
+    }
+
     render() {
         const {
             tagList,
             dataList,
-            currentTagIndex
+            currentTagIndex,
         } = this.props
         const disabled = currentTagIndex === 1
         const value = disabled ? 'time' : this.state.sort
@@ -71,6 +89,17 @@ class More extends React.Component {
                             </RadioGroup>
                         </div>
                     </div>
+                    <div className='collection'>
+                            {
+                                dataList.map((item, index) => (
+                                    <div key={index} className='item'>
+                                        <img src={item.cover} />
+                                        <p>{item.title} <span>{item.rate}</span></p>
+                                    </div>   
+                                ))
+                            }
+                    </div>
+                    <label onClick={this.handleOnLoadMore} className='loadmore'>加载更多</label>
                 </div>
             </div>
         )
@@ -89,11 +118,14 @@ const mapStateToDispatch = (dispatch) => ({
     getTagList() {
         dispatch(actionCreators.getTagList())
     },
-    getDataList(tag, page_limit, page_start) {
-        dispatch(actionCreators.getDataList(tag, page_limit, page_start))
+    getDataList(isSwitchTag, tag, page_limit, page_start) {
+        dispatch(actionCreators.getDataList(isSwitchTag, tag, page_limit, page_start))
     },
     changeTagIndex(index) {
         dispatch(actionCreators.changeTagIndex(index))
+    },
+    changePageStart(index) {
+        dispatch(actionCreators.changePageStart(index))
     }
 })
 

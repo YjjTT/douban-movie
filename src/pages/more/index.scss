@@ -41,5 +41,47 @@
                 margin-top: 15px;
             }
         }
+
+        .collection {
+            width: 100%;
+            .item {
+                display: inline-block;
+                width: 115px;
+                height: 210px;
+                margin-right: 25px;
+                margin-top: 10px;
+                text-align: center;
+                font-size: 13px;
+                overflow: hidden;
+                &:nth-child(5n+5) {
+                    margin-right: 0;
+                }
+                
+                // 图片 
+                img {
+                    width: 100%;
+                    height: 172px;
+                }
+
+                p {
+                    color: #387BAC;
+                    margin-top: 5px;
+                    span {
+                        color: #DF9017; 
+                    }
+                }
+            }
+        }
+        .loadmore {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            margin: 10px 0;
+            background-color: #F7F7F7;
+            color: #387BAC;
+            font-size: 14px;
+            padding: 10px 0;
+            cursor: pointer;
+        }
     }
 }
