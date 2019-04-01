@@ -30,14 +30,19 @@
                 ul {
                     .each {
                         width: 115px;
-                        height: 270px;
+                        // height: 270px;
                         margin-right: 25px;
-                        background-color: lightcyan;
                         float: left;
                         text-align: center;
+                        font-size: 0;
+                        overflow: hidden;
                         &:nth-child(5) {
                             margin-right: 0;
                         }
+                        &:nth-child(10) {
+                            margin-right: 0;
+                        }
+                        
                         a {
                             color: #464646;
                             margin: 0;
@@ -50,6 +55,8 @@
                                 display: block;
                                 margin-top: 10px;
                                 white-space: nowrap;
+                                color: #3277AA;
+
                             }
                         }
 
@@ -62,6 +69,10 @@
                             margin: 0;
                         }
                     }
+
+                    .hot {
+                        height: 230px;
+                    }
                 }
 
                 // 电影分类
@@ -72,10 +83,12 @@
                     padding: 5px 0;
                     box-sizing: border-box;
                     color: #9F9F9F;
+                    cursor: pointer;
                 }
 
                 .active {
                     color: #161616;
+                    font-size: 12px;
                 }
 
                 // 广告

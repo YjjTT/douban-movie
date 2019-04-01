@@ -2,7 +2,8 @@ import { actionTypes } from './index'
 
 const defaultState = {
     theraterList: [],
-    hotMovieList: []
+    hotMovieList: [],
+    hotMovieTagList: []
 }
 
 export default (state = defaultState, action) => {
@@ -15,9 +16,9 @@ export default (state = defaultState, action) => {
                 // theraterList: action.data
                 theraterList: data
             }
-        case actionTypes.GET_HOT_MOVIE_LIST:
+        case actionTypes.GET_HOT_MOVIE_TAGS:
             return {
-                hotMovieList: action.data
+                hotMovieTagList: action.data
             }
         default:
             return state
