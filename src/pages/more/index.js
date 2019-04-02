@@ -27,21 +27,39 @@ class More extends React.Component {
         }
         this.props.changeTagIndex(index)
         const isSwitchTag = true
+        const isSwitchSort = false
         const page_limit = 20
         const page_start = 0
+        this.props.changePageStart(page_start)
+        const sort = index === 1 ? "time" : this.state.sort
+        console.log(sort)
         this.props.getDataList(
+            isSwitchSort,
             isSwitchTag,
             this.props.tagList[index],
             page_limit,
-            page_start
+            page_start,
+            sort
         )
     }
 
-    // 排序单选框
+    // 切换排序
     handleOnRadioChange = (e) => {
         this.setState({
             sort: e.target.value
         })
+        const page_start = 0
+        this.props.changePageStart(page_start)
+        const isSwitchTag = false
+        const isSwitchSort = true
+        this.props.getDataList(
+            isSwitchSort,
+            isSwitchTag,
+            this.props.tagList[this.props.currentTagIndex],
+            this.props.page_limit,
+            page_start,
+            e.target.value
+        )
     }
 
     // 加载更多
@@ -49,11 +67,14 @@ class More extends React.Component {
         const page_start = this.props.page_start + 20
         this.props.changePageStart(page_start)
         const isSwitchTag = false
+        const isSwitchSort = false
         this.props.getDataList(
+            isSwitchSort,
             isSwitchTag,
             this.props.tagList[this.props.currentTagIndex],
             this.props.page_limit,
-            page_start
+            page_start,
+            this.state.sort
         )
     }
 
@@ -93,7 +114,7 @@ class More extends React.Component {
                             {
                                 dataList.map((item, index) => (
                                     <div key={index} className='item'>
-                                        <img src={item.cover} />
+                                        <img alt='' src={item.cover} />
                                         <p>{item.title} <span>{item.rate}</span></p>
                                     </div>   
                                 ))
@@ -118,8 +139,8 @@ const mapStateToDispatch = (dispatch) => ({
     getTagList() {
         dispatch(actionCreators.getTagList())
     },
-    getDataList(isSwitchTag, tag, page_limit, page_start) {
-        dispatch(actionCreators.getDataList(isSwitchTag, tag, page_limit, page_start))
+    getDataList(isSwitchSort, isSwitchTag, tag, page_limit, page_start, sort) {
+        dispatch(actionCreators.getDataList(isSwitchSort, isSwitchTag, tag, page_limit, page_start, sort))
     },
     changeTagIndex(index) {
         dispatch(actionCreators.changeTagIndex(index))

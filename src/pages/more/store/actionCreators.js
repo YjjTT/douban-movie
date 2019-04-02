@@ -35,17 +35,18 @@ export const getTagList = () => {
     }
 }
 
-export const getDataList = (isSwitchTag, tag, page_limit = 20, page_start = 0) => {
+export const getDataList = (isSwitchSort, isSwitchTag, tag, page_limit = 20, page_start = 0, sort) => {
     return dispatch => {
         axios({
             method: 'get',
-            url: `/apb/j/search_subjects?type=movie&tag=${tag}&page_limit=${page_limit}&page_start=${page_start}&sort=recommend`
+            url: `/apb/j/search_subjects?type=movie&tag=${tag}&page_limit=${page_limit}&page_start=${page_start}&sort=${sort}`
         }).then(res => {
             if (res.status === 200) {
                 const action = {
                     type: actionTypes.DATA_LIST,
                     data: res.data.subjects,
-                    isSwitchTag: isSwitchTag
+                    isSwitchTag: isSwitchTag,
+                    isSwitchSort: isSwitchSort
                 }
                 dispatch(action)
             }

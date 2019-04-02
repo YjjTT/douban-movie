@@ -17,7 +17,7 @@ export default (state = defaultState, action) => {
             }
         
         case actionTypes.DATA_LIST:
-            let data = action.isSwitchTag ? [] : state.dataList
+            let data = (action.isSwitchTag || action.isSwitchSort) ? [] : state.dataList
             return {
                 ...state,
                 // dataList: action.data,
