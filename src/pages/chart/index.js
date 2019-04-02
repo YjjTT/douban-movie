@@ -10,13 +10,15 @@ class Chart extends React.Component {
         this.props.getNewMovieInfo()
         this.props.getWeeklyMonvieInfo()
         this.props.getUsBoxMonvieInfo()
+        this.props.getTop250MonvieInfo()
     }
 
     render() {
         const {
             newMovieInfo,
             weeklyMovieInfo,
-            usBoxMovieInfo
+            usBoxMovieInfo,
+            top250MovieInfo
         } = this.props
         return (
             <div id='chart'>
@@ -50,6 +52,7 @@ class Chart extends React.Component {
                         }
                     </div>
                     <div className='aside'>
+                        {/*  */}
                         <label className='head'>{weeklyMovieInfo.title} · · · · · ·</label> 
                         <ul>
                             {
@@ -62,6 +65,7 @@ class Chart extends React.Component {
                             }
                             
                         </ul>
+                        {/*  */}
                         <label className='head'>{usBoxMovieInfo.title} · · · · · ·</label> 
                         <ul>
                             {
@@ -75,7 +79,21 @@ class Chart extends React.Component {
                                     </li>
                                 ))
                             }
-                            
+                        </ul>
+                        {/*  */}
+                        <label className='head'>{top250MovieInfo.title} · · · · · ·</label> 
+                        <ul>
+                            {
+                                (usBoxMovieInfo.subjects || []).map((item, index) => (
+                                    <li key={index}>
+                                        {index + 1} <a href=''>{item.subject.title}</a> 
+                                        {
+                                            item.new ? <label className='new'>new</label> : null
+                                        }
+                                        <label className='money'>{Math.floor(item.box / 10000)}万</label>
+                                    </li>
+                                ))
+                            }
                         </ul>
                     </div>  
                 </div>
@@ -89,7 +107,8 @@ const mapStateToProps = (state) => {
     return {
         newMovieInfo: state.chart.newMovieInfo,
         weeklyMovieInfo: state.chart.weeklyMovieInfo,
-        usBoxMovieInfo: state.chart.usBoxMovieInfo
+        usBoxMovieInfo: state.chart.usBoxMovieInfo,
+        top250MovieInfo: state.chart.top250MovieInfo
     }
 }
 
@@ -105,7 +124,12 @@ const mapStateToDispatch = (dispatch) => ({
     // 北美
     getUsBoxMonvieInfo() {
         dispatch(actionCreators.getUsBoxMonvieInfo())
+    },
+    // 250
+    getTop250MonvieInfo() {
+        dispatch(actionCreators.getTop250MonvieInfo())
     }
+    
 })
 
 export default connect(mapStateToProps, mapStateToDispatch)(Chart)

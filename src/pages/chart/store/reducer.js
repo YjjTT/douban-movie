@@ -3,7 +3,8 @@ import { actionTypes } from './index'
 const defaultState = {
     newMovieInfo: {},
     weeklyMovieInfo: {},
-    usBoxMovieInfo: {}
+    usBoxMovieInfo: {},
+    top250MovieInfo: {}
 }
 
 export default (state = defaultState, action) => {
@@ -24,6 +25,12 @@ export default (state = defaultState, action) => {
             return {
                 ...state,
                 usBoxMovieInfo: action.data
+            }
+            
+        case actionTypes.GET_TOP250_MOVIE_INFO:
+            return {
+                ...state,
+                top250MovieInfo: action.data
             }
         
         default:
