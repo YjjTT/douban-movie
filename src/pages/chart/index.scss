@@ -21,6 +21,7 @@
         width: 100%;
 
         .article {
+            float: left;
             width: 675px;
 
             .item {
@@ -69,6 +70,44 @@
                         .comment {
                             color: #6A6A6A;
                         }
+                    }
+                }
+            }
+        }
+        .aside {
+            float: right;
+            width: 300px;
+
+            ul {
+                padding-left: 10px;
+                margin-top: 10px;
+                li {
+                    font-size: 14px;
+                    border-bottom: 1px dashed #DDDDDD;
+                    padding: 5px 0;
+
+                    a {
+                        color: #3277AA;
+                        margin-left: 6px;
+                    }
+
+                    .new {
+                        display: inline-block;
+                        padding: 0 5px;
+                        background-color: #FFA500;
+                        color: white;
+                        font-weight: bold;
+                        
+                    }
+
+                    .money {
+                        float: right;
+                        font-size: 14px;
+                    }
+
+                    .delta {
+                        float: right;
+                        font-size: 14px;
                     }
                 }
             }

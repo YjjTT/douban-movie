@@ -1,5 +1,5 @@
 import React from 'react'
-import { Rate } from 'antd'
+import { Rate, Icon } from 'antd'
 import { connect } from 'react-redux'
 import './index.scss'
 import { actionCreators } from './store';
@@ -8,16 +8,20 @@ class Chart extends React.Component {
 
     componentDidMount() {
         this.props.getNewMovieInfo()
+        this.props.getWeeklyMonvieInfo()
+        this.props.getUsBoxMonvieInfo()
     }
 
     render() {
         const {
-            newMovieInfo
+            newMovieInfo,
+            weeklyMovieInfo,
+            usBoxMovieInfo
         } = this.props
         return (
             <div id='chart'>
                 <h1>豆瓣电影排行榜</h1>
-                <div className='content'>
+                <div className='content clearfix'>
                     <div className='article'>
                         <label className='head'>{newMovieInfo.title} · · · · · ·</label>
                         {
@@ -25,7 +29,7 @@ class Chart extends React.Component {
                                 <div key={index} className='item clearfix'>
                                     <img alt={item.alt} src={item.images.medium} />
                                     <div className='desc'>
-                                        <a href='' className='title'>{item.title} / {item.original_title}}</a>
+                                        <a href='' className='title'>{item.title} / {item.original_title}</a>
                                         <p className='actors'>
                                             {item.pubdates[0]} 
                                             {
@@ -45,7 +49,35 @@ class Chart extends React.Component {
                             ))
                         }
                     </div>
-                    <div className='aside'></div>  
+                    <div className='aside'>
+                        <label className='head'>{weeklyMovieInfo.title} · · · · · ·</label> 
+                        <ul>
+                            {
+                                (weeklyMovieInfo.subjects || []).map((item, index) => (
+                                    <li key={index}>
+                                        {index + 1} <a href=''>{item.subject.title}</a>
+                                        <label className='delta'><Icon type="arrow-up" /> {item.delta}</label>
+                                    </li>
+                                ))
+                            }
+                            
+                        </ul>
+                        <label className='head'>{usBoxMovieInfo.title} · · · · · ·</label> 
+                        <ul>
+                            {
+                                (usBoxMovieInfo.subjects || []).map((item, index) => (
+                                    <li key={index}>
+                                        {index + 1} <a href=''>{item.subject.title}</a> 
+                                        {
+                                            item.new ? <label className='new'>new</label> : null
+                                        }
+                                        <label className='money'>{Math.floor(item.box / 10000)}万</label>
+                                    </li>
+                                ))
+                            }
+                            
+                        </ul>
+                    </div>  
                 </div>
                 
             </div>
@@ -55,13 +87,24 @@ class Chart extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        newMovieInfo: state.chart.newMovieInfo
+        newMovieInfo: state.chart.newMovieInfo,
+        weeklyMovieInfo: state.chart.weeklyMovieInfo,
+        usBoxMovieInfo: state.chart.usBoxMovieInfo
     }
 }
 
 const mapStateToDispatch = (dispatch) => ({
+    // 新电影
     getNewMovieInfo() {
         dispatch(actionCreators.getNewMovieInfo())
+    },
+    // 一周电影
+    getWeeklyMonvieInfo() {
+        dispatch(actionCreators.getWeeklyMonvieInfo())
+    },
+    // 北美
+    getUsBoxMonvieInfo() {
+        dispatch(actionCreators.getUsBoxMonvieInfo())
     }
 })
 
