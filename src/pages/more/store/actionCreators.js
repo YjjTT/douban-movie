@@ -14,7 +14,7 @@ export const getTagList = () => {
                 }
                 axios({
                     method: 'get',
-                    url: `/apb/j/search_subjects?type=movie&tag=${res.data.tags[0]}&page_limit=20&page_start=0`
+                    url: `/apb/j/search_subjects?type=movie&tag=${res.data.tags[0]}&page_limit=20&page_start=0&sort=recommend`
                 }).then(res => {
                     if (res.status === 200) {
                         const innerAction = {
@@ -39,7 +39,7 @@ export const getDataList = (isSwitchTag, tag, page_limit = 20, page_start = 0) =
     return dispatch => {
         axios({
             method: 'get',
-            url: `/apb/j/search_subjects?type=movie&tag=${tag}&page_limit=${page_limit}&page_start=${page_start}`
+            url: `/apb/j/search_subjects?type=movie&tag=${tag}&page_limit=${page_limit}&page_start=${page_start}&sort=recommend`
         }).then(res => {
             if (res.status === 200) {
                 const action = {
