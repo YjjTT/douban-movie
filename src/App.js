@@ -6,6 +6,7 @@ import Header from './common/header/index'
 import Home from './pages/home/index'
 import MovieDetail from './pages/movieDetail/index'
 import More from './pages/more/index'
+import Chart from './pages/chart/index'
 import 'antd/dist/antd.css';
 import './App.css';
 
@@ -17,6 +18,7 @@ class App extends Component {
 					<div>
 						<Header />
 						<Route exact path='/' component={Home}></Route>
+						<Route exact path='/chart' component={Chart}></Route>
 						<Route exact path='/more' component={More}></Route>
 						<Route exact path='/movieDetail/:id' component={MovieDetail}></Route>
 					</div>

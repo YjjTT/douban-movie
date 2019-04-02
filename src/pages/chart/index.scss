@@ -1,0 +1,77 @@
+#chart {
+    width: 1040px;
+    margin: 0 auto;
+    margin-top: 35px;
+    font-size: 17px;
+
+    .head {
+        font-size: 16px;
+        color: #072;
+        font-weight: bolder;
+        margin: 0 0 12px 0
+    }
+
+
+    h1 {
+        font-size: 26px;
+        color: #494949;
+    }
+
+    .content {
+        width: 100%;
+
+        .article {
+            width: 675px;
+
+            .item {
+                margin-top: 20px;
+                border-top: 1px dashed #DDDDDD;
+                padding: 15px 0;
+
+                img {
+                    width: 75px;
+                    height: 106px;
+                    float: left;
+                }
+
+                .desc {
+                    float: left;
+                    width: calc(100% - 100px);
+                    padding: 0 20px;
+
+                    .title {
+                        color: #3677AA;
+                        font-size: 15px;
+                        display: block;
+                    }
+                    .actors {
+                        width: 100%;
+                        margin-top: 10px;
+                        margin-bottom: 0;
+                        font-size: 13px;
+                        color: #6A6A6A;
+                    }
+                    .ant-rate-star {
+                        margin-right: 2px;
+                    }
+                    .bottom {
+                        margin-top: 10px;
+                        ul {
+                            float: left;
+                        }
+                        label {
+                            float: left;
+                            font-size: 10px;
+                            color: #FFAC2C;
+                            margin-left: 10px;
+                        }
+
+                        .comment {
+                            color: #6A6A6A;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

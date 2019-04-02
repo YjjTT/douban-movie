@@ -113,10 +113,10 @@ class More extends React.Component {
                     <div className='collection'>
                             {
                                 dataList.map((item, index) => (
-                                    <div key={index} className='item'>
+                                    <a href='/' key={index} className='item'>
                                         <img alt='' src={item.cover} />
                                         <p>{item.title} <span>{item.rate}</span></p>
-                                    </div>   
+                                    </a>   
                                 ))
                             }
                     </div>

@@ -266,7 +266,7 @@ class Home extends React.Component {
                     </div>
                     <div className='aside'>
                         <a href='/' className='ques'>豆瓣电影评分八问</a>
-                        <label className='billboard-hd'>一周口碑榜 <a href='/'>更多榜单>>></a></label>
+                        <label className='billboard-hd'>一周口碑榜 <Link to='/chart'>更多榜单>>></Link></label>
                         <ul className='billboard-bd'>
                                 {
                                     weeklyList.map((item, index) => (
