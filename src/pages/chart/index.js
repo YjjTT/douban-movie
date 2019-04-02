@@ -20,6 +20,8 @@ class Chart extends React.Component {
             usBoxMovieInfo,
             top250MovieInfo
         } = this.props
+        const date = new Date()
+
         return (
             <div id='chart'>
                 <h1>豆瓣电影排行榜</h1>
@@ -53,8 +55,8 @@ class Chart extends React.Component {
                     </div>
                     <div className='aside'>
                         {/*  */}
-                        <label className='head'>{weeklyMovieInfo.title} · · · · · ·</label> 
-                        <ul>
+                        <label className='head'>{weeklyMovieInfo.title}<span className='date'>{date.getMonth()}月{date.getUTCDate()}日 更新</span></label> 
+                        <ul className='sideMovie'>
                             {
                                 (weeklyMovieInfo.subjects || []).map((item, index) => (
                                     <li key={index}>
@@ -66,8 +68,8 @@ class Chart extends React.Component {
                             
                         </ul>
                         {/*  */}
-                        <label className='head'>{usBoxMovieInfo.title} · · · · · ·</label> 
-                        <ul>
+                        <label className='head'>{usBoxMovieInfo.title}<span className='date'>{date.getMonth()}月{date.getUTCDate()}日 更新 / 美元</span></label> 
+                        <ul className='sideMovie'>
                             {
                                 (usBoxMovieInfo.subjects || []).map((item, index) => (
                                     <li key={index}>
@@ -81,19 +83,25 @@ class Chart extends React.Component {
                             }
                         </ul>
                         {/*  */}
-                        <label className='head'>{top250MovieInfo.title} · · · · · ·</label> 
-                        <ul>
+                        <label className='head'>{top250MovieInfo.title} · · · · · ·<a className='top250All'>全部</a></label> 
+                        <ul className='top250'>
                             {
-                                (usBoxMovieInfo.subjects || []).map((item, index) => (
+                                (top250MovieInfo.subjects || []).map((item, index) => (
                                     <li key={index}>
-                                        {index + 1} <a href=''>{item.subject.title}</a> 
-                                        {
-                                            item.new ? <label className='new'>new</label> : null
-                                        }
-                                        <label className='money'>{Math.floor(item.box / 10000)}万</label>
+                                        <a>
+                                            <img alt={item.alt} src={item.images.medium} />
+                                            <label className='movie-title'>{item.title}</label>
+                                        </a>
                                     </li>
                                 ))
                             }
+                            {/* <li>
+                                <a>
+                                    <img src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2221768894.webp' />
+                                    <label className='movie-title'>消失的爱人</label>
+                                </a>
+                            </li> */}
+                            
                         </ul>
                     </div>  
                 </div>
