@@ -1,8 +1,10 @@
 import React from 'react'
 import { Rate, Icon } from 'antd'
 import { connect } from 'react-redux'
-import './index.scss'
 import { actionCreators } from './store';
+import { Link } from 'react-router-dom'
+import './index.scss'
+
 
 class Chart extends React.Component {
 
@@ -83,7 +85,7 @@ class Chart extends React.Component {
                             }
                         </ul>
                         {/*  */}
-                        <label className='head'>{top250MovieInfo.title} · · · · · ·<a className='top250All'>全部</a></label> 
+                        <label className='head'>{top250MovieInfo.title} · · · · · ·<Link to='/top250' className='top250All'>全部</Link></label> 
                         <ul className='top250'>
                             {
                                 (top250MovieInfo.subjects || []).map((item, index) => (

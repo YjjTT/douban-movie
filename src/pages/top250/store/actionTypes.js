@@ -1,0 +1,1 @@
+export const GET_TOP250_MOVIE_INFO = 'top250/top250_movie_info'

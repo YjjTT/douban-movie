@@ -1,0 +1,61 @@
+#top250 {
+    width: 1040px;
+    margin: 0 auto;
+    margin-top: 35px;
+    font-size: 17px;
+
+    .head {
+        font-size: 26px;
+    }
+
+    .article {
+        margin-top: 40px;
+        width: 675px;
+
+        li.movie {
+            border-top: 1px dashed #D5D5D5;
+            padding: 10px 0;
+            p {
+                margin-bottom: 5px;
+            }
+            .item {
+                display: inline-block;
+                width: 675px;
+                height: 150px;
+                font-size: 0;
+
+                .pic {
+                    float: left;
+                    width: 100px;
+                    height: 148px;
+                }
+
+                .info {
+                    width: calc(100% - 120px);
+                    margin-left: 15px;
+                    float: left;
+                    .title {
+                        font-size: 15px;
+                        color: #676699;
+                    }
+
+                    .actor {
+                        font-size: 13px;
+                        color: #6F6F6F;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        
+                    }
+
+                    .comment {
+                        font-size: 13px;
+                        color: #7D7D7D;
+                    }
+                }
+            }
+
+        }
+        
+    }
+}
