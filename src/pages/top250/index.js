@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from "react-redux";
 import { Pagination } from  'antd'
 import { actionCreators } from './store';
+import { Link } from 'react-router-dom'
 import './index.scss'
 
 class Top250 extends React.Component {
@@ -28,9 +29,9 @@ class Top250 extends React.Component {
                             (top250MovieInfo.subjects || []).map((item, index) => (
                                 <li className='movie' key={index}>
                                     <div className='item'>
-                                        <a><img alt={item.alt} src={item.images.medium} className='pic' /></a>
+                                        <Link to={`/movieDetail/${item.id}`}><img alt={item.alt} src={item.images.medium} className='pic' /></Link>
                                         <div className='info'>
-                                            <a className='title'>{item.title} / {item.original_title}</a>
+                                            <a href='#' className='title'>{item.title} / {item.original_title}</a>
                                             <p className='actor'>导演: 
                                                 {
                                                     item.directors.map((each, index) => (

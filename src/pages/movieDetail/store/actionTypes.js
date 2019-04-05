@@ -1,0 +1,1 @@
+export const GET_MOVIE_DETAIL = 'detail/get_movie_detail'

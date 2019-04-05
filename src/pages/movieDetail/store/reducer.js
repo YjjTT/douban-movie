@@ -1,16 +1,16 @@
 import { actionTypes } from './index'
 
 const defaultState = {
-    top250MovieInfo: {},
+    movieDetail: {}
 }
 
-
 export default (state = defaultState, action) => {
+    
     switch(action.type) {
-        case actionTypes.GET_TOP250_MOVIE_INFO:
+        case actionTypes.GET_MOVIE_DETAIL:
             return {
                 ...state,
-                top250MovieInfo: action.data
+                movieDetail: action.data
             }
         default:
             return state

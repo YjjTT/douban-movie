@@ -1,0 +1,56 @@
+#movieDetail {
+    width: 1040px;
+    margin: 0 auto;
+    margin-top: 35px;
+    font-size: 17px;
+
+    .content {
+        margin-top: 40px;
+        width: 675px;
+        .title, .year {
+            color: #494949;
+            font-size: 30px;
+        }
+
+        .year {
+            color: #888;
+        }
+
+        .info {
+            margin-top: 10px;
+            img {
+                float: left;
+                width: 135px;
+                height: 200px;
+                margin-right: 10px;
+            }
+            .middle {
+                float: left;
+                width: calc((100% - 150px) / 3 * 2);
+                padding-right: 5px;
+                box-sizing: border-box;
+                font-size: 13px;
+
+                label {
+                    display: block;
+
+                    .name {
+                        color: #3277AA;
+                    }
+
+                    .type {
+                        color: #111111;
+                    }
+                }
+            }
+
+            .right {
+                float: left;
+                width: calc((100% - 150px) / 3);
+                padding-left: 5px;
+                box-sizing: border-box;
+            }
+        }
+    }
+    
+}
