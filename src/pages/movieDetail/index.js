@@ -95,6 +95,16 @@ class MovieDetail extends React.Component {
                             </div>
                         </div>
                     </div>
+
+                    <div className='desc'>
+                        <h2>{movieDetail.title}的演职员 ······</h2>
+                        <p>{movieDetail.summary}</p>
+                    </div>
+                    <div className='desc'>
+                        <h2>{movieDetail.title}的剧情简介 ······</h2>
+                        <p>{movieDetail.summary}</p>
+                    </div>
+                                    
                 </div>
                 <div className='aside'></div>
             </div>
