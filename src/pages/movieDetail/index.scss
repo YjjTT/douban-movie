@@ -4,11 +4,23 @@
     margin-top: 35px;
     font-size: 17px;
 
-    h2 {
-        margin-top: 15px;
-        color: #007722;
-        font-size: 16px;
+    .top {
+        h2 {
+            margin-top: 15px;
+            color: #007722;
+            font-size: 16px;
+            float: left;
+        }
+        a {
+            float: left;
+            font-size: 13px;
+            padding: 18px 0;
+            margin-left: 10px;
+            color: #3477AA;
+        }
+
     }
+    
 
     p {
         font-size: 13px;
@@ -46,6 +58,7 @@
                     display: block;
                     margin-top: 3px;
                     .name {
+                        margin-right: 2px;
                         color: #3277AA;
                         &:hover {
                             background-color: #3277AA;
@@ -91,6 +104,33 @@
                         }
                     }
                 }
+            }
+        }
+        .popular_comments {
+            .comments {
+                border-bottom: 1px solid #EEEEEE;
+                font-size: 13px;
+                .commenttop {
+                    .authorname {
+                        color: #3F7EAF;
+                        margin-right: 10px;
+                    }
+                    .ant-rate-star {
+                        margin-right: 0;
+                        color: #FFAC2C;
+                    }
+                    .commenttime {
+                        color: #aaa;
+                        margin-left: 10px;
+                    }
+                    .use {
+                        float: right;
+                    }
+                }
+                p {
+                    margin: 10px 0;
+                }
+                
             }
         }
     }

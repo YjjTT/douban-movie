@@ -21,50 +21,50 @@ class MovieDetail extends React.Component {
                     <div className='info clearfix'>
                         <img alt={movieDetail.alt} src={(movieDetail.images || {}).small} />
                         <div className='middle'>
-                            <label>导演: 
+                            <label>导演: &nbsp;
                                 {
                                     (movieDetail.directors || []).map((item, index) => (
                                         <a key={index} href='/' className='name'>{item.name}</a>   
                                     ))
                                 }
                             </label>
-                            <label>编剧: 
+                            <label>编剧:  &nbsp;
                                 {
                                     (movieDetail.writers || []).map((item, index) => (
-                                        <a key={index} href='/' className='name'>{item.name} /</a>
+                                        <a key={index} href='/' className='name'>{item.name}/</a>
                                     ))
                                 }
                                 
                             </label>
-                            <label>主演: 
+                            <label>主演:  &nbsp;
                                 {
                                     (movieDetail.casts || []).map((item, index) => (
                                         <a className='name' key={index} href='/'>{item.name} /</a>
                                     ))
                                 }
                             </label>
-                            <label>类型: 
+                            <label>类型:  &nbsp;
                                 {
                                     (movieDetail.genres || []).map((item, index) => (
                                         <span key={index} className='type'>{item} /</span>
                                     ))
                                 }
                             </label>
-                            <label>语言: 
+                            <label>语言:  &nbsp;
                                 {
                                     (movieDetail.languages || []).map((item, index) => (
                                         <span key={index} className='type'>{item}</span>
                                     ))
                                 }
                             </label>
-                            <label>制片国家/地区: 
+                            <label>制片国家/地区:  &nbsp;
                                 {
                                     (movieDetail.countries || []).map((item, index) => (
                                         <span key={index} className='type'>{item}</span>
                                     ))
                                 }
                             </label>
-                            <label>片长: 
+                            <label>片长:  &nbsp;
                                 {
                                     (movieDetail.durations || []).map((item, index) => (
                                         <span key={index} className='type'>{item}</span>   
@@ -72,7 +72,7 @@ class MovieDetail extends React.Component {
                                 }
                                 
                             </label>
-                            <label>又名: 
+                            <label>又名:  &nbsp;
                                 {
                                     (movieDetail.aka || []).map((item, index) => (
                                         <span key={index} className='type'>{item}</span>
@@ -95,14 +95,39 @@ class MovieDetail extends React.Component {
                             </div>
                         </div>
                     </div>
-
                     <div className='desc'>
-                        <h2>{movieDetail.title}的演职员 ······</h2>
+                        <div className='top clearfix'>
+                            <h2>{movieDetail.title}的剧情简介 ······</h2>
+                        </div>
                         <p>{movieDetail.summary}</p>
                     </div>
+
                     <div className='desc'>
-                        <h2>{movieDetail.title}的剧情简介 ······</h2>
+                        <div className='top clearfix'>
+                            <h2>{movieDetail.title}的演职员 ······</h2>        
+                        </div>
                         <p>{movieDetail.summary}</p>
+                    </div>
+                    <div className='popular_comments'>
+                        <div className='top clearfix'>
+                            <h2>{movieDetail.title}的短评 ······</h2>
+                            <a>(全部 {movieDetail.comments_count} 条)</a>
+                        </div>
+                        {
+                            (movieDetail.popular_comments || []).map((item, index) => (
+                                <div key={index} className='comments'>
+                                    <div className='commenttop'>
+                                        <a href='#' className='authorname'>{item.author.name}</a>
+                                        <Rate allowHalf disabled defaultValue={item.rating.value} style={{fontSize: 15}} ></Rate>
+                                        <span className='commenttime'>{item.created_at.split(' ')[0]}</span>
+                                        <span className='use'>2222<a>有用</a></span>
+                                    </div>
+                                    
+                                    <p className='comment'>{item.content}</p>
+                                </div>
+                            ))
+                        }
+                        
                     </div>
                                     
                 </div>
