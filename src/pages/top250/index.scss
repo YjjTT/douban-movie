@@ -23,6 +23,25 @@
                 width: 675px;
                 height: 150px;
                 font-size: 0;
+                .star {
+                    margin-left: 10px;
+                }
+
+                .score {
+                    display: inline-block;
+                    font-size: 15px;
+                    margin-left: 10px;
+                    color: #FFAC2C;
+                    padding: 2px 0;
+                    float: left;
+                }
+                .ant-rate {
+                    float: left;
+                }
+                .ant-rate-star {
+                    margin-right: 0;
+                    color: #FFAC2C;
+                }
 
                 .pic {
                     float: left;

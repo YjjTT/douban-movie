@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from "react-redux";
-import { Pagination } from  'antd'
+import { Pagination, Rate } from  'antd'
 import { actionCreators } from './store';
 import { Link } from 'react-router-dom'
 import './index.scss'
@@ -31,7 +31,7 @@ class Top250 extends React.Component {
                                     <div className='item'>
                                         <Link to={`/movieDetail/${item.id}`}><img alt={item.alt} src={item.images.medium} className='pic' /></Link>
                                         <div className='info'>
-                                            <a href='#' className='title'>{item.title} / {item.original_title}</a>
+                                            <Link to={`/movieDetail/${item.id}`} className='title'>{item.title} / {item.original_title}</Link>
                                             <p className='actor'>导演: 
                                                 {
                                                     item.directors.map((each, index) => (
@@ -53,6 +53,11 @@ class Top250 extends React.Component {
                                             <div className='rate'></div>
                                             <span className='comment'>希望让人自由</span>
                                         </div>
+                                        <div>
+                                            <Rate className='star' allowHalf disabled defaultValue={item.rating.stars / 10} style={{fontSize: 15}}></Rate>
+                                            <span className='score'>3分</span>
+                                        </div>
+                                        
                                     </div>
                                 </li>
                             ))
