@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { actionCreators } from './store'
-import { Rate } from 'antd'
+import { Rate, Icon } from 'antd'
 import './index.scss'
 class MovieDetail extends React.Component {
     componentDidMount() {
@@ -124,6 +124,31 @@ class MovieDetail extends React.Component {
                                     </div>
                                     
                                     <p className='comment'>{item.content}</p>
+                                </div>
+                            ))
+                        }
+                    </div>
+                    <div className='popular_reviews'>
+                        <div className='top clearfix'>
+                            <h2>{movieDetail.title}的影评 ······</h2>
+                            <a>(全部 {movieDetail.reviews_count} 条)</a>
+                        </div>
+                        {
+                            (movieDetail.popular_reviews || []).map((item, index) => (
+                                <div key={index} className='comments'>
+                                    <div className='commenttop'>
+                                        <a><img alt={item.author.alt} src={item.author.avatar} /></a>
+                                        <a href='#' className='authorname'>{item.author.name}</a>
+                                        <Rate allowHalf disabled defaultValue={item.rating.value} style={{fontSize: 15}} ></Rate>
+                                        <span className='commenttime'>2018</span>
+                                    </div>
+                                    <label className='comment-title'>{item.title}</label>
+                                    <p className='comment'>{item.summary}</p>
+                                    <div className='comment-bottom'>
+                                        <span><Icon type="up" style={{fontSize: 15}} />739</span>
+                                        <span><Icon type="down" style={{fontSize: 15}} />739</span>
+                                        <a href='#' className='response'>780回应</a>
+                                    </div>
                                 </div>
                             ))
                         }

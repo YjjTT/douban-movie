@@ -133,6 +133,53 @@
                 
             }
         }
+        .popular_reviews {
+            .comments {
+                padding-bottom: 20px;
+                border-bottom: 1px solid #EEEEEE;
+                font-size: 13px;
+                .commenttop {
+                    a > img {
+                        width: 20px;
+                        height: 20px;
+                    }
+                    .authorname {
+                        color: #3F7EAF;
+                        margin-right: 10px;
+                        margin-left: 10px;
+                    }
+                    .ant-rate-star {
+                        margin-right: 0;
+                        color: #FFAC2C;
+                    }
+                    .commenttime {
+                        color: #aaa;
+                        margin-left: 10px;
+                    }
+                }
+                .comment-title {
+                    display: block;
+                    color: #3576a8;
+                    font-size: 15px;
+                    margin-top: 10px;
+                    margin-bottom: 15px;
+                }
+                .comment-bottom {
+                    font-size: 10px;
+                    span {
+                        background-color: #F0F7F9;
+                        margin-left: 10px;
+                        padding: 5px 10px;
+                        color: #3277AA;
+                    }
+                    .response {
+                        background-color: white;
+                        margin-left: 10px;
+                    }
+                }
+            }
+
+        }
     }
     
 }
