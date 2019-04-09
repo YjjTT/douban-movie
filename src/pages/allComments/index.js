@@ -53,7 +53,42 @@ class AllComments extends React.Component {
                     />
                 </div>
                 <div className='aside'>
-                    aside
+                    <a className='movieName'> > 去 {(allCommentsInfo.subject || {}).title} 的页面</a>
+                    <img 
+                        alt={(allCommentsInfo.subject || {}).alt} 
+                        src={((allCommentsInfo.subject || {}).images || {}).small} 
+                    />
+                    <label>导演: 
+                        {
+                            ((allCommentsInfo.subject || {}).directors || []).map((item, index) => (
+                                <a key={index}>{item.name}</a>
+                            ))
+                        }
+                    </label>
+                    <label>主演: 
+                        {
+                            ((allCommentsInfo.subject || {}).casts || []).map((item, index) => (
+                                <a key={index}>{item.name} /</a>
+                            ))
+                        }
+                    </label>
+                    <label>类型: 
+                        {
+                            ((allCommentsInfo.subject || {}).genres || []).map((item, index) => (
+                                <span key={index}>{item} /</span>
+                            ))
+                        }
+                    </label>
+                    <label>片场: 
+                        {
+                            ((allCommentsInfo.subject || {}).durations || [])[0]
+                        }
+                    </label>
+                    <label>上映: 
+                        {
+                            (allCommentsInfo.subject || {}).year
+                        }
+                    </label>
                 </div>
             </div>
         )
