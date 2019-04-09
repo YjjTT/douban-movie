@@ -1,0 +1,97 @@
+#allReviews {
+    width: 1040px;
+    margin: 0 auto;
+    margin-top: 35px;
+    font-size: 17px;
+
+    .comments {
+        width: 675px;
+        float: left;
+
+        .comment {
+            padding: 15px;
+            border-top: 1px solid #EEEEEE;
+            img {
+                width: 50px;
+                height: 50px;
+                float: left;
+            }
+            .info {
+                width: calc(100% - 80px);
+                float: left;
+                margin-left: 15px;
+                font-size: 13px;
+                > p {
+                    margin-top: 10px;
+                }
+
+                .isLaunch {
+                    color: #3277AA;
+                    cursor: pointer;
+                    &:hover {
+                        color: white;
+                        background-color: #3277AA;
+                    }
+                }
+                > div {
+                    .name {
+                        color: #3878A9;
+                        float: left;
+                    }
+    
+                    .time {
+                        color: #999999;
+                        float: left;
+                        margin-left: 15px;
+                    }
+                    .rate {
+                        float: left;
+                        margin-left: 15px;
+                        .ant-rate-star {
+                            margin-right: 0;
+                            color: #FFAC2C;
+                        }
+                    }
+
+                    > label {
+                        float: right;
+                        color: #3979AA;
+
+                        .num {
+                            color: #4F4F4F;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .aside {
+        width: 300px;
+        float: right;
+        font-size: 13px;
+        .movieName {
+            color: #3878A9;
+            display: block;
+        }
+
+        img {
+            width: 120px;
+            height: 180px;
+            margin-top: 5px;
+        }
+
+        label {
+            display: block;
+            margin-top: 2px;
+            a {
+                color: #3878A9;
+
+                &:hover {
+                    color: white;
+                    background-color: #3878A9;
+                }
+            }
+        }
+    }
+}

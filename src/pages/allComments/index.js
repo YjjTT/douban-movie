@@ -64,14 +64,14 @@ class AllComments extends React.Component {
                     <label>导演: 
                         {
                             ((allCommentsInfo.subject || {}).directors || []).map((item, index) => (
-                                <a key={index}>{item.name}</a>
+                                <a href='/' key={index}>{item.name}</a>
                             ))
                         }
                     </label>
                     <label>主演: 
                         {
                             ((allCommentsInfo.subject || {}).casts || []).map((item, index) => (
-                                <a key={index}>{item.name} /</a>
+                                <a href='/' key={index}>{item.name} /</a>
                             ))
                         }
                     </label>
@@ -110,10 +110,7 @@ const mapStateToDispatch = (dispatch) => ({
 
     changeStart(start) {
         dispatch(actionCreators.changeStart(start))
-    }
-
-    
-    
+    } 
 })
 
 export default connect(mapStateToProps, mapStateToDispatch)(AllComments)

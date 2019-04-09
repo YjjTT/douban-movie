@@ -6,6 +6,8 @@ import { reducer as chartReducer } from '../pages/chart/store'
 import { reducer as top250Reducer } from '../pages/top250/store'
 import { reducer as movieDetailReducer } from '../pages/movieDetail/store'
 import { reducer as allCommentsReducer } from '../pages/allComments/store'
+import { reducer as allReviewssReducer } from '../pages/allReviews/store'
+
 
 const reducer = combineReducers({
     header: headReducer,
@@ -14,7 +16,8 @@ const reducer = combineReducers({
     chart: chartReducer,
     top250: top250Reducer,
     movieDetail: movieDetailReducer,
-    comments: allCommentsReducer
+    comments: allCommentsReducer,
+    reviews: allReviewssReducer    
 })
 
 export default reducer

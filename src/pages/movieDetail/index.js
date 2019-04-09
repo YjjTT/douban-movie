@@ -111,8 +111,8 @@ class MovieDetail extends React.Component {
                             {
                                 (movieDetail.directors || []).map((item, index) => (
                                     <li key={index}>
-                                        <a><img src={item.avatars.small} alt={item.alt} /></a>
-                                        <a className='name'>{item.name}</a>
+                                        <a href='/'><img src={item.avatars.small} alt={item.alt} /></a>
+                                        <a href='/' className='name'>{item.name}</a>
                                         <span className='job'>导演</span>
                                     </li>
 
@@ -121,8 +121,8 @@ class MovieDetail extends React.Component {
                             {
                                 (casts || []).map((item, index) => (
                                     <li key={index}>
-                                        <a><img src={item.avatars.small} alt={item.alt} /></a>
-                                        <a className='name'>{item.name}</a>
+                                        <a href='/'><img src={item.avatars.small} alt={item.alt} /></a>
+                                        <a href='/' className='name'>{item.name}</a>
                                         <span className='job'>演员</span>
                                     </li>
 
@@ -153,7 +153,7 @@ class MovieDetail extends React.Component {
                     <div className='popular_reviews'>
                         <div className='top clearfix'>
                             <h2>{movieDetail.title}的影评 ······</h2>
-                            <a href='/'>(全部 {movieDetail.reviews_count} 条)</a>
+                            <Link to={`/allReviews/${movieDetail.id}`}>(全部 {movieDetail.reviews_count} 条)</Link>
                         </div>
                         {
                             (movieDetail.popular_reviews || []).map((item, index) => (
