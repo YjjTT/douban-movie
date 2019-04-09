@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { actionCreators } from './store'
 import { Radio } from 'antd'
 import './index.scss'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const RadioGroup = Radio.Group 
 class More extends React.Component {
@@ -113,10 +114,10 @@ class More extends React.Component {
                     <div className='collection'>
                             {
                                 dataList.map((item, index) => (
-                                    <a href='/' key={index} className='item'>
+                                    <Link to={`/movieDetail/${item.id}`} key={index} className='item'>
                                         <img alt='' src={item.cover} />
                                         <p>{item.title} <span>{item.rate}</span></p>
-                                    </a>   
+                                    </Link>   
                                 ))
                             }
                     </div>

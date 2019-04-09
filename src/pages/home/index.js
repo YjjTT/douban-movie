@@ -211,10 +211,10 @@ class Home extends React.Component {
                                             <ul className='clearfix'>
                                                 {   item.map((each, innerindex) => (
                                                         <li key={innerindex} className='each hot'>
-                                                            <a href='/'>
+                                                            <Link to={`/movieDetail/${each.id}`}>
                                                                 <img alt='' src={each.cover} />
-                                                            </a>
-                                                            <a className='title' href='/'>{each.title}</a>
+                                                            </Link>
+                                                            <Link className='title' to={`/movieDetail/${each.id}`}>{each.title}</Link>
                                                             <span className='rate'>
                                                                 {each.rate}                                       
                                                             </span>
@@ -246,10 +246,10 @@ class Home extends React.Component {
                                             <ul className='clearfix'>
                                                 {   item.map((each, innerindex) => (
                                                         <li key={innerindex} className='each hot'>
-                                                            <a href='/'>
+                                                            <Link to={`/movieDetail/${each.id}`}>
                                                                 <img alt='' src={each.cover} />
-                                                            </a>
-                                                            <a className='title' href='/'>{each.title}</a>
+                                                            </Link>
+                                                            <Link className='title' to={`/movieDetail/${each.id}`}>{each.title}</Link>
                                                             <span className='rate'>
                                                                 {each.rate}                                       
                                                             </span>
@@ -270,7 +270,7 @@ class Home extends React.Component {
                         <ul className='billboard-bd'>
                                 {
                                     weeklyList.map((item, index) => (
-                                        <li key={index}>{index + 1} <a href='/'>{item.subject.title}</a></li>
+                                        <li key={index}>{index + 1} <Link to={`/movieDetail/${item.subject.id}`}>{item.subject.title}</Link></li>
                                     ))
                                 }
                         </ul>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { actionCreators } from './store'
 import { Rate, Icon } from 'antd'
 import './index.scss'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 class MovieDetail extends React.Component {
     componentDidMount() {
         const id = this.props.match.params.id
@@ -111,16 +112,16 @@ class MovieDetail extends React.Component {
                     <div className='popular_comments'>
                         <div className='top clearfix'>
                             <h2>{movieDetail.title}的短评 ······</h2>
-                            <a>(全部 {movieDetail.comments_count} 条)</a>
+                            <Link to={`/allComments/${movieDetail.id}`}>(全部 {movieDetail.comments_count} 条)</Link>
                         </div>
                         {
                             (movieDetail.popular_comments || []).map((item, index) => (
                                 <div key={index} className='comments'>
                                     <div className='commenttop'>
-                                        <a href='#' className='authorname'>{item.author.name}</a>
+                                        <a href='/' className='authorname'>{item.author.name}</a>
                                         <Rate allowHalf disabled defaultValue={item.rating.value} style={{fontSize: 15}} ></Rate>
                                         <span className='commenttime'>{item.created_at.split(' ')[0]}</span>
-                                        <span className='use'>2222<a>有用</a></span>
+                                        <span className='use'>2222<a href='/'>有用</a></span>
                                     </div>
                                     
                                     <p className='comment'>{item.content}</p>
@@ -131,14 +132,14 @@ class MovieDetail extends React.Component {
                     <div className='popular_reviews'>
                         <div className='top clearfix'>
                             <h2>{movieDetail.title}的影评 ······</h2>
-                            <a>(全部 {movieDetail.reviews_count} 条)</a>
+                            <a href='/'>(全部 {movieDetail.reviews_count} 条)</a>
                         </div>
                         {
                             (movieDetail.popular_reviews || []).map((item, index) => (
                                 <div key={index} className='comments'>
                                     <div className='commenttop'>
-                                        <a><img alt={item.author.alt} src={item.author.avatar} /></a>
-                                        <a href='#' className='authorname'>{item.author.name}</a>
+                                        <a href='/'><img alt={item.author.alt} src={item.author.avatar} /></a>
+                                        <a href='/' className='authorname'>{item.author.name}</a>
                                         <Rate allowHalf disabled defaultValue={item.rating.value} style={{fontSize: 15}} ></Rate>
                                         <span className='commenttime'>2018</span>
                                     </div>
@@ -147,7 +148,7 @@ class MovieDetail extends React.Component {
                                     <div className='comment-bottom'>
                                         <span><Icon type="up" style={{fontSize: 15}} />739</span>
                                         <span><Icon type="down" style={{fontSize: 15}} />739</span>
-                                        <a href='#' className='response'>780回应</a>
+                                        <a href='/' className='response'>780回应</a>
                                     </div>
                                 </div>
                             ))

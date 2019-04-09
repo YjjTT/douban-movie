@@ -33,9 +33,11 @@ class Chart extends React.Component {
                         {
                             (newMovieInfo.subjects || []).map((item, index) => (
                                 <div key={index} className='item clearfix'>
-                                    <img alt={item.alt} src={item.images.medium} />
+                                    <Link to={`/movieDetail/${item.id}`}>
+                                        <img alt={item.alt} src={item.images.medium} />
+                                    </Link>
                                     <div className='desc'>
-                                        <a href='/' className='title'>{item.title} / {item.original_title}</a>
+                                        <Link to={`/movieDetail/${item.id}`} className='title'>{item.title} / {item.original_title}</Link>
                                         <p className='actors'>
                                             {item.pubdates[0]} 
                                             {
@@ -62,7 +64,7 @@ class Chart extends React.Component {
                             {
                                 (weeklyMovieInfo.subjects || []).map((item, index) => (
                                     <li key={index}>
-                                        {index + 1} <a href='/'>{item.subject.title}</a>
+                                        {index + 1} <Link to={`/movieDetail/${item.subject.id}`}>{item.subject.title}</Link>
                                         <label className='delta'><Icon type="arrow-up" /> {item.delta}</label>
                                     </li>
                                 ))
@@ -75,7 +77,7 @@ class Chart extends React.Component {
                             {
                                 (usBoxMovieInfo.subjects || []).map((item, index) => (
                                     <li key={index}>
-                                        {index + 1} <a href='/'>{item.subject.title}</a> 
+                                        {index + 1} <Link to={`/movieDetail/${item.subject.id}`}>{item.subject.title}</Link> 
                                         {
                                             item.new ? <label className='new'>new</label> : null
                                         }
@@ -90,10 +92,10 @@ class Chart extends React.Component {
                             {
                                 (top250MovieInfo.subjects || []).map((item, index) => (
                                     <li key={index}>
-                                        <a href='/'>
+                                        <Link to={`/movieDetail/${item.id}`}>
                                             <img alt={item.alt} src={item.images.medium} />
                                             <label className='movie-title'>{item.title}</label>
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))
                             }
