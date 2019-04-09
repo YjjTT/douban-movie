@@ -13,7 +13,7 @@ class MovieDetail extends React.Component {
         const {
             movieDetail
         } = this.props
-        console.log(movieDetail.rating)
+        const casts = (movieDetail.casts || []).splice(0, 4)
         return (
             <div id='movieDetail'>
                 <div className='content'>
@@ -105,9 +105,30 @@ class MovieDetail extends React.Component {
 
                     <div className='desc'>
                         <div className='top clearfix'>
-                            <h2>{movieDetail.title}的演职员 ······</h2>        
+                            <h2>{movieDetail.title}的影人列表 ······</h2>        
                         </div>
-                        <p>{movieDetail.summary}</p>
+                        <ul>
+                            {
+                                (movieDetail.directors || []).map((item, index) => (
+                                    <li key={index}>
+                                        <a><img src={item.avatars.small} alt={item.alt} /></a>
+                                        <a className='name'>{item.name}</a>
+                                        <span className='job'>导演</span>
+                                    </li>
+
+                                ))
+                            }
+                            {
+                                (casts || []).map((item, index) => (
+                                    <li key={index}>
+                                        <a><img src={item.avatars.small} alt={item.alt} /></a>
+                                        <a className='name'>{item.name}</a>
+                                        <span className='job'>演员</span>
+                                    </li>
+
+                                ))
+                            }
+                        </ul>
                     </div>
                     <div className='popular_comments'>
                         <div className='top clearfix'>

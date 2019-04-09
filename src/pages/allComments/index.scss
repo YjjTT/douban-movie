@@ -77,6 +77,11 @@
             margin-top: 2px;
             a {
                 color: #3878A9;
+
+                &:hover {
+                    color: white;
+                    background-color: #3878A9;
+                }
             }
         }
     }

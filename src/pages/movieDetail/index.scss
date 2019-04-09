@@ -106,6 +106,34 @@
                 }
             }
         }
+
+        .desc {
+            ul {
+                li {
+                    display: inline-block;
+                    width: 100px;
+                    height: 182px;
+                    margin-right: 20px;
+                    // font-size: 0;
+                    vertical-align: top;
+                    text-align: center;
+                    font-size: 13px;
+                    a {
+                        img {
+                            width: 100px;
+                        }
+                    }
+                    .name {
+                        display: block;
+                        color: #111111;
+                    }
+                    .job {
+                        color: #C6C6C6;
+                    }
+                }
+            }
+        }
+
         .popular_comments {
             .comments {
                 border-bottom: 1px solid #EEEEEE;

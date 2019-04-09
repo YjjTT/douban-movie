@@ -3,6 +3,7 @@ import { Rate, Pagination } from 'antd'
 import { connect } from 'react-redux'
 import { actionCreators } from './store/index'
 import './index.scss'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 class AllComments extends React.Component {
     constructor() {
@@ -53,7 +54,9 @@ class AllComments extends React.Component {
                     />
                 </div>
                 <div className='aside'>
-                    <a className='movieName'> > 去 {(allCommentsInfo.subject || {}).title} 的页面</a>
+                    <Link className='movieName' to={`/movieDetail/${(allCommentsInfo.subject || {}).id}`}> 
+                        > 去 {(allCommentsInfo.subject || {}).title} 的页面
+                    </Link>
                     <img 
                         alt={(allCommentsInfo.subject || {}).alt} 
                         src={((allCommentsInfo.subject || {}).images || {}).small} 
