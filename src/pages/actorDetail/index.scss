@@ -1,0 +1,57 @@
+#actorDetail {
+    width: 1040px;
+    margin: 0 auto;
+    margin-top: 35px;
+    font-size: 17px;
+
+    h2.actorName {
+        font-size: 26px;
+        color: #494949;
+        font-weight: bold;
+    }
+
+    .content {
+        width: 675px;
+        img {
+            width: 135px;
+            height: 190px;
+            float: left;
+            margin-right: 15px;
+        }
+
+        .info {
+            width: calc(100% - 150px);
+            display: inline-block;
+            label {
+                display: block;
+                font-size: 14px;
+                span {
+                    color: #141414;
+                }
+            }  
+        }
+        .desc {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #DDDDDD;
+            h2 {
+                font-size: 15px;
+                color: #6C747C;
+            }
+            .summary {
+                font-size: 13px;
+                color: #111;
+                text-indent: 2em;
+            }
+
+            ul {
+                li {
+                    img {
+                        width: 110px;
+                        height: 115px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,1 @@
+export const GET_ACTOR_INFO = 'actor/get_actor_info'
