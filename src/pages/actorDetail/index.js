@@ -22,7 +22,7 @@ class ActorDetail extends React.Component {
         const {
             actorInfo
         } = this.props
-        console.log(actorInfo)
+        const photos = (actorInfo.photos || []).splice(0, 5)
         return(
             <div id='actorDetail'>
                 <h2 className='actorName'>{actorInfo.name}</h2>
@@ -50,21 +50,13 @@ class ActorDetail extends React.Component {
                     <div className='desc'>
                         <h2>影人图片 ····</h2>
                         <ul>
-                            <li>
-                                <img alt='' src='https://img3.doubanio.com/view/photo/m/public/p2175540865.jpg' />
-                            </li>
-                            <li>
-                                <img alt='' src='https://img3.doubanio.com/view/photo/m/public/p2175540865.jpg' />
-                            </li>
-                            <li>
-                                <img alt='' src='https://img3.doubanio.com/view/photo/m/public/p2175540865.jpg' />
-                            </li>
-                            <li>
-                                <img alt='' src='https://img3.doubanio.com/view/photo/m/public/p2175540865.jpg' />
-                            </li>
-                            <li>
-                                <img alt='' src='https://img3.doubanio.com/view/photo/m/public/p2175540865.jpg' />
-                            </li>
+                            {
+                                photos.map((item, index) => (
+                                    <li key={index}>
+                                        <img alt={item.alt} src={item.image} />
+                                    </li>
+                                ))
+                            }
                         </ul>
                     </div>
                 </div>
