@@ -47,9 +47,14 @@
             ul {
                 li {
                     display: inline-block;
+                    text-align: center;
                     img {
-                        width: 115px;
+                        width: 95px;
                         height: 115px;
+                    }
+                    .movie-title {
+                        display: block;
+                        font-size: 13px;
                     }
                 }
             }

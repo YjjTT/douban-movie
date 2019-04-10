@@ -59,6 +59,22 @@ class ActorDetail extends React.Component {
                             }
                         </ul>
                     </div>
+                    <div className='desc'>
+                        <h2>最受好评的五部电影 ····</h2>
+                        <ul>
+                            {
+                                (actorInfo.works || []).map((item, index) => (
+                                    <li key={index}>
+                                        <div>
+                                        <img alt={item.subject.alt} src={item.subject.images.small} />
+                                        <span className='movie-title'>{item.subject.title}</span>
+                                        </div>
+                                        
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
                 </div>
                 <div className='aside'></div>
             </div>
