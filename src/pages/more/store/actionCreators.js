@@ -1,11 +1,11 @@
 import axios from 'axios'
 import { actionTypes } from './index'
 
-export const getTagList = () => {
+export const getTagList = (type = 'movie') => {
     return dispatch => {
         axios({
             method: 'get',
-            url: '/apb/j/search_tags?type=movie'
+            url: `/apb/j/search_tags?type=${type}`
         }).then(res => {
             if (res.status === 200) {
                 const action = {
@@ -14,7 +14,7 @@ export const getTagList = () => {
                 }
                 axios({
                     method: 'get',
-                    url: `/apb/j/search_subjects?type=movie&tag=${res.data.tags[0]}&page_limit=20&page_start=0&sort=recommend`
+                    url: `/apb/j/search_subjects?type=${type}&tag=${res.data.tags[0]}&page_limit=20&page_start=0&sort=recommend`
                 }).then(res => {
                     if (res.status === 200) {
                         const innerAction = {

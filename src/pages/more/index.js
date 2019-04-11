@@ -16,12 +16,12 @@ class More extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getTagList()
+        this.props.getTagList('movie')
     }
 
     // 切换标签
     handleOnTagClick = (index) => {
-        if (index === 1) {
+        if (this.props.tagList[index] === '最新') {
             this.setState({
                 sort: 'time'
             })
@@ -32,7 +32,7 @@ class More extends React.Component {
         const page_limit = 20
         const page_start = 0
         this.props.changePageStart(page_start)
-        const sort = index === 1 ? "time" : this.state.sort
+        const sort = this.props.tagList[index] === '最新' ? "time" : this.state.sort
         console.log(sort)
         this.props.getDataList(
             isSwitchSort,
@@ -85,7 +85,7 @@ class More extends React.Component {
             dataList,
             currentTagIndex,
         } = this.props
-        const disabled = currentTagIndex === 1
+        const disabled = this.props.tagList[currentTagIndex] === '最新'
         const value = disabled ? 'time' : this.state.sort
         return (
             <div id='more'>
@@ -137,8 +137,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapStateToDispatch = (dispatch) => ({
-    getTagList() {
-        dispatch(actionCreators.getTagList())
+    getTagList(type) {
+        dispatch(actionCreators.getTagList(type))
     },
     getDataList(isSwitchSort, isSwitchTag, tag, page_limit, page_start, sort) {
         dispatch(actionCreators.getDataList(isSwitchSort, isSwitchTag, tag, page_limit, page_start, sort))

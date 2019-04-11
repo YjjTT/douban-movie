@@ -121,7 +121,7 @@ class MovieDetail extends React.Component {
                             {
                                 (casts || []).map((item, index) => (
                                     <li key={index}>
-                                        <a href='/'><img src={item.avatars.small} alt={item.alt} /></a>
+                                        <Link to={`/actorDetail/${item.id}`}><img src={item.avatars.small} alt={item.alt} /></Link>
                                         <Link to={`/actorDetail/${item.id}`} className='name'>{item.name}</Link>
                                         <span className='job'>演员</span>
                                     </li>
