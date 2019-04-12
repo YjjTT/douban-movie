@@ -27,7 +27,7 @@ class App extends Component {
 						<Route exact path='/actorDetail/:id' component={ActorDetail}></Route>
 						<Route exact path='/top250' component={Top250}></Route>
 						<Route exact path='/chart' component={Chart}></Route>
-						<Route exact path='/more' component={More}></Route>
+						<Route exact path='/more/:type' component={More}></Route>
 						<Route exact path='/movieDetail/:id' component={MovieDetail}></Route>
 					</div>
 				</BrowserRouter>

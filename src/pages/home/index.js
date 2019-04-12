@@ -202,7 +202,7 @@ class Home extends React.Component {
                                     ))
                                     
                                 }
-                                <Link to='/more' className='more'>更多>></Link>
+                                <Link to={`/more/${'movie'}`} className='more'>更多>></Link>
                             </div>
                             <Slider {...settings}>
                                 {
@@ -237,7 +237,7 @@ class Home extends React.Component {
                                     ))
                                     
                                 }
-                                <Link to='/more' className='more'>更多>></Link>
+                                <Link to={`/more/${'tv'}`} className='more'>更多>></Link>
                             </div>
                             <Slider {...settings}>
                                 {

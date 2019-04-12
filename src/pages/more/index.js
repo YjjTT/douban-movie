@@ -11,12 +11,17 @@ class More extends React.Component {
     constructor() {
         super()
         this.state = {
-            sort: 'recommend'
+            sort: 'recommend',
+            type: ''
         }
     }
 
     componentDidMount() {
-        this.props.getTagList('movie')
+        const type = this.props.match.params.type
+        this.setState({
+            type
+        })
+        this.props.getTagList(type)
     }
 
     // 切换标签
@@ -35,6 +40,7 @@ class More extends React.Component {
         const sort = this.props.tagList[index] === '最新' ? "time" : this.state.sort
         console.log(sort)
         this.props.getDataList(
+            this.state.type,
             isSwitchSort,
             isSwitchTag,
             this.props.tagList[index],
@@ -54,6 +60,7 @@ class More extends React.Component {
         const isSwitchTag = false
         const isSwitchSort = true
         this.props.getDataList(
+            this.state.type,
             isSwitchSort,
             isSwitchTag,
             this.props.tagList[this.props.currentTagIndex],
@@ -70,6 +77,7 @@ class More extends React.Component {
         const isSwitchTag = false
         const isSwitchSort = false
         this.props.getDataList(
+            this.state.type,
             isSwitchSort,
             isSwitchTag,
             this.props.tagList[this.props.currentTagIndex],
@@ -140,8 +148,8 @@ const mapStateToDispatch = (dispatch) => ({
     getTagList(type) {
         dispatch(actionCreators.getTagList(type))
     },
-    getDataList(isSwitchSort, isSwitchTag, tag, page_limit, page_start, sort) {
-        dispatch(actionCreators.getDataList(isSwitchSort, isSwitchTag, tag, page_limit, page_start, sort))
+    getDataList(type, isSwitchSort, isSwitchTag, tag, page_limit, page_start, sort) {
+        dispatch(actionCreators.getDataList(type, isSwitchSort, isSwitchTag, tag, page_limit, page_start, sort))
     },
     changeTagIndex(index) {
         dispatch(actionCreators.changeTagIndex(index))
