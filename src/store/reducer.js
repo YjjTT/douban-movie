@@ -8,6 +8,7 @@ import { reducer as movieDetailReducer } from '../pages/movieDetail/store'
 import { reducer as allCommentsReducer } from '../pages/allComments/store'
 import { reducer as allReviewssReducer } from '../pages/allReviews/store'
 import { reducer as actorInfoReducer } from '../pages/actorDetail/store'
+import { reducer as comingReducer } from '../pages/coming/store'
 
 
 const reducer = combineReducers({
@@ -19,7 +20,8 @@ const reducer = combineReducers({
     movieDetail: movieDetailReducer,
     comments: allCommentsReducer,
     reviews: allReviewssReducer,
-    actorInfo: actorInfoReducer 
+    actorInfo: actorInfoReducer,
+    coming: comingReducer
 })
 
 export default reducer

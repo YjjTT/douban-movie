@@ -163,7 +163,7 @@ class Home extends React.Component {
                             <div>
                                 正在热映
                                 <a className='in-theater' href='/'>全部正在热映>></a>
-                                <a className='will-in-theater' href='/'>即将上映>></a>
+                                <Link to='/coming' className='will-in-theater' href='/'>即将上映>></Link>
                             </div>
                             <Slider {...settings}>
                                 {

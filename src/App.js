@@ -11,6 +11,7 @@ import Top250 from './pages/top250/index'
 import AllComments from './pages/allComments/index'
 import AllReviews from './pages/allReviews/index'
 import ActorDetail from './pages/actorDetail/index'
+import Coming from './pages/coming/index'
 import 'antd/dist/antd.css';
 import './App.css';
 
@@ -26,6 +27,7 @@ class App extends Component {
 						<Route exact path='/allReviews/:id' component={AllReviews}></Route>
 						<Route exact path='/actorDetail/:id' component={ActorDetail}></Route>
 						<Route exact path='/top250' component={Top250}></Route>
+						<Route exact path='/coming' component={Coming}></Route>
 						<Route exact path='/chart' component={Chart}></Route>
 						<Route exact path='/more/:type' component={More}></Route>
 						<Route exact path='/movieDetail/:id' component={MovieDetail}></Route>
