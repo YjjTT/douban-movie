@@ -68,7 +68,7 @@ class Header extends React.Component {
                                     
                                     {
                                         searchData.map((item, index) => (
-                                            <div className='searchitem clearfix'>
+                                            <div key={index} className='searchitem clearfix'>
                                                 <Link to={`/movieDetail/${item.id}`}>
                                                     <img alt='' src={item.img} />
                                                 </Link>
@@ -79,8 +79,6 @@ class Header extends React.Component {
                                             </div>
                                         ))
                                     }
-                                    
-                                    
                                 </div>
                             :   null
                     }
