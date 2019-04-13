@@ -18,6 +18,44 @@
         height: 76px;
         width: 1040px;
         margin: 0 auto;
+        position: relative;
+        .searchList {
+            z-index: 10;
+            background-color: white;
+            width: 450px;
+            position: absolute;
+            top: 60px;
+            left: 160px;
+            .searchitem {
+                padding: 10px;
+                box-sizing: border-box;
+                border-top: 1px solid #EEEEEE;
+                img {
+                    width: 40px;
+                    height: 55px;
+                    float: left;
+                }
+                .searchdesc {
+                    float: left;
+                    width: calc(100% - 40px - 20px);
+                    margin-left: 10px;
+                    
+                    label {
+                        display: block;
+                        a {
+                            color: #3979AA;
+                        }
+                        .time {
+                            color: #C6C6C6;
+                        }
+                    }
+                    .english-title {
+                        color: #C6C6C6;
+                    }
+                }
+            }
+
+        }
         .title {
             float: left;
             color: #258DCD;

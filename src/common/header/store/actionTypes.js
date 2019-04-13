@@ -1,0 +1,1 @@
+export const GET_SEARCH_DATA = 'header/get_search_data'
