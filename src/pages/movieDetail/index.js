@@ -25,14 +25,14 @@ class MovieDetail extends React.Component {
                             <label>导演: &nbsp;
                                 {
                                     (movieDetail.directors || []).map((item, index) => (
-                                        <a key={index} href='/' className='name'>{item.name}</a>   
+                                        <Link key={index} to={`/actorDetail/${item.id}`} className='name'>{item.name}</Link>   
                                     ))
                                 }
                             </label>
                             <label>编剧:  &nbsp;
                                 {
                                     (movieDetail.writers || []).map((item, index) => (
-                                        <a key={index} href='/' className='name'>{item.name}/</a>
+                                        <Link key={index} to={`/actorDetail/${item.id}`} className='name'>{item.name}/</Link>
                                     ))
                                 }
                                 
@@ -40,7 +40,7 @@ class MovieDetail extends React.Component {
                             <label>主演:  &nbsp;
                                 {
                                     (movieDetail.casts || []).map((item, index) => (
-                                        <a className='name' key={index} href='/'>{item.name} /</a>
+                                        <Link className='name' key={index} to={`/actorDetail/${item.id}`} >{item.name} /</Link>
                                     ))
                                 }
                             </label>
@@ -111,8 +111,8 @@ class MovieDetail extends React.Component {
                             {
                                 (movieDetail.directors || []).map((item, index) => (
                                     <li key={index}>
-                                        <a href='/'><img src={item.avatars.small} alt={item.alt} /></a>
-                                        <a href='/' className='name'>{item.name}</a>
+                                        <Link to={`/actorDetail/${item.id}`}><img src={(item.avatars || {}).small} alt={item.alt} /></Link>
+                                        <Link to={`/actorDetail/${item.id}`} className='name'>{item.name}</Link>
                                         <span className='job'>导演</span>
                                     </li>
 
@@ -121,7 +121,7 @@ class MovieDetail extends React.Component {
                             {
                                 (casts || []).map((item, index) => (
                                     <li key={index}>
-                                        <Link to={`/actorDetail/${item.id}`}><img src={item.avatars.small} alt={item.alt} /></Link>
+                                        <Link to={`/actorDetail/${item.id}`}><img src={(item.avatars || {}).small} alt={item.alt} /></Link>
                                         <Link to={`/actorDetail/${item.id}`} className='name'>{item.name}</Link>
                                         <span className='job'>演员</span>
                                     </li>
